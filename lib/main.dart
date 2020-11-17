@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/personList.dart';
 import 'appColor.dart';
 
 void main() => runApp(MyApp());
@@ -55,7 +56,7 @@ class BodyContainer extends Container {
   Color get color => Colors.cyanAccent.shade100;
   @override
   // TODO: implement child
-  Widget get child => Center(child: MyColumn());
+  Widget get child => Center(child: PersonList());
 }
 
 class MyRow extends Row {
