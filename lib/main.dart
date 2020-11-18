@@ -1,8 +1,17 @@
+import 'package:args/args.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/personList.dart';
+import 'package:hello_world/service/person_service.dart';
 import 'appColor.dart';
 
-void main() => runApp(MyApp());
+void main(List<String> args) {
+  final parser = new ArgParser()
+    ..addOption('mode', abbr: 'm', defaultsTo: 'stub');
+  var results = parser.parse(args);
+  print(results);
+
+  runApp(MyApp());
+}
 
 String greeting() {
   return "Hello";
@@ -54,9 +63,11 @@ class FloatingButton extends FloatingActionButton {
 class BodyContainer extends Container {
   @override
   Color get color => Colors.cyanAccent.shade100;
+
+  final PersonNetworkService personService = PersonNetworkService();
+
   @override
-  // TODO: implement child
-  Widget get child => Center(child: PersonList());
+  Widget get child => Center(child: PersonList(personService.fetchPerson()));
 }
 
 class MyRow extends Row {
