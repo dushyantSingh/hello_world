@@ -5,17 +5,20 @@ import 'create_config.dart';
 
 ArgResults argResult;
 void main(List<String> args) {
-  final parser = new ArgParser()
+  // ignore: always_specify_types
+  final List<String> allowedModes = ['stub', 'test', 'prod'];
+
+  final ArgParser parser = ArgParser()
     ..addOption('mode',
         abbr: 'm',
-        allowed: ['stub', 'test', 'prod'],
-        callback: (mode) => print('Initializing $mode'));
+        allowed: allowedModes,
+        callback: (String mode) => print('Initializing $mode'));
 
   parser.addOption('apiKey', abbr: 'k', defaultsTo: '');
   parser.addOption('amc', abbr: 'a', defaultsTo: 'none');
 
   argResult = parser.parse(args);
 
-  final fileString = generateEnvConfig(argResult);
+  final String fileString = generateEnvConfig(argResult);
   createEnvFile(fileString);
 }

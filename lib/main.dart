@@ -1,23 +1,18 @@
-import 'package:args/args.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/personList.dart';
 import 'package:hello_world/service/person_service.dart';
+
 import 'appColor.dart';
 
-void main(List<String> args) {
-  final parser = new ArgParser()
-    ..addOption('mode', abbr: 'm', defaultsTo: 'stub');
-  var results = parser.parse(args);
-  print(results);
-
+void main() {
   runApp(MyApp());
 }
 
 String greeting() {
-  return "Hello";
+  return 'Hello';
 }
 
-String flutterBody() => "Something";
+String flutterBody() => 'Something';
 
 class MyApp extends MaterialApp {
   @override
@@ -34,7 +29,7 @@ class MyScaffold extends Scaffold {
 }
 
 class MyAppBar extends AppBar {
-  final text;
+  final String text;
   MyAppBar(this.text);
 
   @override
@@ -50,11 +45,11 @@ class MyAppBar extends AppBar {
 class FloatingButton extends FloatingActionButton {
   @override
   Widget get child => Center(
-        child: Icon(Icons.add_a_photo, color: Colors.white),
+        child: const Icon(Icons.add_a_photo, color: Colors.white),
       );
   @override
-  get onPressed => () {
-        print("Clicked");
+  Null Function() get onPressed => () {
+        print('Clicked');
       };
   @override
   Color get backgroundColor => primaryColor();
@@ -83,24 +78,24 @@ class MyRow extends Row {
           flex: 4,
           child: Container(
             color: Colors.orange,
-            padding: EdgeInsets.all(30.0),
-            child: Text('1'),
+            padding: const EdgeInsets.all(30.0),
+            child: const Text('1'),
           ),
         ),
         Expanded(
           flex: 3,
           child: Container(
             color: Colors.pink,
-            padding: EdgeInsets.all(30.0),
-            child: Text('2'),
+            padding: const EdgeInsets.all(30.0),
+            child: const Text('2'),
           ),
         ),
         Expanded(
           flex: 2,
           child: Container(
             color: Colors.purple,
-            padding: EdgeInsets.all(30.0),
-            child: Text('3'),
+            padding: const EdgeInsets.all(30.0),
+            child: const Text('3'),
           ),
         )
       ];
@@ -114,27 +109,28 @@ class MyColumn extends Column {
   @override
   List<Widget> get children => [
         Container(
-            padding: EdgeInsets.only(left: 10, right: 10), child: MyRow()),
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: MyRow()),
         Container(
-          padding: EdgeInsets.all(20.0),
-          margin:
-              EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
+          padding: const EdgeInsets.all(20.0),
+          margin: const EdgeInsets.only(
+              left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
           color: primaryColor(),
-          child: Text('Primary'),
+          child: const Text('Primary'),
         ),
         Container(
-          padding: EdgeInsets.all(10.0),
-          margin:
-              EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
+          padding: const EdgeInsets.all(10.0),
+          margin: const EdgeInsets.only(
+              left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
           color: Colors.blue,
-          child: Text('Blue'),
+          child: const Text('Blue'),
         ),
         Container(
-          padding: EdgeInsets.all(30.0),
-          margin:
-              EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
+          padding: const EdgeInsets.all(30.0),
+          margin: const EdgeInsets.only(
+              left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
           color: Colors.green,
-          child: Text('Green'),
+          child: const Text('Green'),
         ),
       ];
 }
